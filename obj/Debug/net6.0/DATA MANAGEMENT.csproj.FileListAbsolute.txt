@@ -1,0 +1,15 @@
+F:\CS30\Projects\DATA-MANAGEMENT\bin\Debug\net6.0\DATA MANAGEMENT.exe
+F:\CS30\Projects\DATA-MANAGEMENT\bin\Debug\net6.0\DATA MANAGEMENT.deps.json
+F:\CS30\Projects\DATA-MANAGEMENT\bin\Debug\net6.0\DATA MANAGEMENT.runtimeconfig.json
+F:\CS30\Projects\DATA-MANAGEMENT\bin\Debug\net6.0\DATA MANAGEMENT.dll
+F:\CS30\Projects\DATA-MANAGEMENT\bin\Debug\net6.0\DATA MANAGEMENT.pdb
+F:\CS30\Projects\DATA-MANAGEMENT\obj\Debug\net6.0\DATA MANAGEMENT.csproj.AssemblyReference.cache
+F:\CS30\Projects\DATA-MANAGEMENT\obj\Debug\net6.0\DATA MANAGEMENT.GeneratedMSBuildEditorConfig.editorconfig
+F:\CS30\Projects\DATA-MANAGEMENT\obj\Debug\net6.0\DATA MANAGEMENT.AssemblyInfoInputs.cache
+F:\CS30\Projects\DATA-MANAGEMENT\obj\Debug\net6.0\DATA MANAGEMENT.AssemblyInfo.cs
+F:\CS30\Projects\DATA-MANAGEMENT\obj\Debug\net6.0\DATA MANAGEMENT.csproj.CoreCompileInputs.cache
+F:\CS30\Projects\DATA-MANAGEMENT\obj\Debug\net6.0\DATA MANAGEMENT.dll
+F:\CS30\Projects\DATA-MANAGEMENT\obj\Debug\net6.0\refint\DATA MANAGEMENT.dll
+F:\CS30\Projects\DATA-MANAGEMENT\obj\Debug\net6.0\DATA MANAGEMENT.pdb
+F:\CS30\Projects\DATA-MANAGEMENT\obj\Debug\net6.0\DATA MANAGEMENT.genruntimeconfig.cache
+F:\CS30\Projects\DATA-MANAGEMENT\obj\Debug\net6.0\ref\DATA MANAGEMENT.dll

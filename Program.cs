@@ -1,21 +1,72 @@
 ﻿// DATA MANAGEMENT - Jordan Antonio
+// https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/how-to?pivots=dotnet-6-0
+using System.Text.Json;
+using System.Text.Json.Serialization;
+
 #nullable disable
 Console.Clear();
 
+string jsonString = 
+
 // DATA
+List<User> users = new List<User>();
+users.Add()
 
+List<Char> valChars = new List<Char>();
+valChars.Add(new Char("1", "2", "4"));
+valChars.Add(new Char("1s", "2s", "4fsd"));
+valChars.Add(new Char("1d", "2sda", "4f"));
 
-// bool loginLoop = true;
-// while (loginLoop) {
-//     Console.WriteLine("LOGIN");
-//     Console.WriteLine();
-// }
+bool loginLoop = true;
+bool mainLoop = false;
 
-bool mainLoop = true;
+while (loginLoop) {
+    login();
+}
+
+void login() {
+    Console.WriteLine("WELCOME");
+    Console.WriteLine("1. Login");
+    Console.WriteLine("2. Create New Account");
+    Console.WriteLine("3. Exit");
+    string accountOption = Console.ReadLine();
+
+    if (accountOption == "1") {
+        Console.WriteLine("LOGIN");
+        Console.Write("Enter Username: ");
+        string enteredUsername = Console.ReadLine();
+        Console.Write("\nEnter Password: ");
+        string enteredPassword = Console.ReadLine();
+        for (int n = 0; n < users.Count; n++) {
+            if (users[n].Username == enteredUsername && users[n].Password == enteredPassword) {
+                Console.WriteLine("\nSuccessfully Logged in");
+                loginLoop = false;
+                mainLoop = true;
+                return;
+            }
+        }
+        Console.WriteLine("\nInvalid Login Credentials\n");
+
+    } else if (accountOption == "2") {
+        Console.WriteLine("CREATE ACCOUNT");
+        Console.Write("Enter Username: ");
+        string newUsername = Console.ReadLine();
+        Console.Write("\nEnter Password: ");
+        string newPassword = Console.ReadLine();
+        users.Add(new User(newUsername, newPassword));
+        Console.WriteLine("Account Successfully Created");
+        string json = JsonSerializer.Serialize(users);
+        File.WriteAllText("path.json", json);
+    } else if (accountOption == "3") {
+        loginLoop = false;
+    } else {
+        Console.WriteLine("INVALID ANSWER\n");
+    }
+}
 
 // Welcome
 while (mainLoop) {
-    Console.WriteLine("MAIN MENU");
+    Console.WriteLine("\nMAIN MENU");
     Console.WriteLine("1. Display All Data");
     Console.WriteLine("2. Display Filtered Data");
     Console.WriteLine("3. Sort Data");
@@ -45,21 +96,17 @@ while (mainLoop) {
     } else if (option == "6") {
 
     } else if (option == "7") {
-        
+        mainLoop = false;
+        loginLoop = true;
+        while (loginLoop) {
+            login();
+        }
     } else if (option == "8") {
         mainLoop = false;
     } else {
         Console.WriteLine("INVALID ANSWER\n");
     }
 }
-
-List<User> users = new List<User>();
-users.Add(new User("John", "fsd"));
-
-List<Char> valChars = new List<Char>();
-valChars.Add(new Char("1", "2", "4"));
-valChars.Add(new Char("1s", "2s", "4fsd"));
-valChars.Add(new Char("1d", "2sda", "4f"));
 
 class Char {
 	public string Name { get; set; }
