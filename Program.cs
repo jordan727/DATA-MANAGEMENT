@@ -1,21 +1,19 @@
 ﻿// DATA MANAGEMENT - Jordan Antonio
 // https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/how-to?pivots=dotnet-6-0
 using System.Text.Json;
-using System.Text.Json.Serialization;
-
+// using System.Text.Json.Serialization;
 #nullable disable
 Console.Clear();
 
-string jsonString = 
-
 // DATA
-List<User> users = new List<User>();
-users.Add()
+string accountsFile = $"json/accounts.json";
+string dataFile = $"json/data.json";
 
-List<Char> valChars = new List<Char>();
-valChars.Add(new Char("1", "2", "4"));
-valChars.Add(new Char("1s", "2s", "4fsd"));
-valChars.Add(new Char("1d", "2sda", "4f"));
+string accountsString = File.ReadAllText(accountsFile);
+string dataString = File.ReadAllText(dataFile);
+
+List<User> users = JsonSerializer.Deserialize<List<User>>(accountsString)!;
+List<Char> characters = JsonSerializer.Deserialize<List<Char>>(dataString)!;
 
 bool loginLoop = true;
 bool mainLoop = false;
@@ -55,8 +53,9 @@ void login() {
         string newPassword = Console.ReadLine();
         users.Add(new User(newUsername, newPassword));
         Console.WriteLine("Account Successfully Created");
+        // Save all account data
         string json = JsonSerializer.Serialize(users);
-        File.WriteAllText("path.json", json);
+        File.WriteAllText(accountsFile, json);
     } else if (accountOption == "3") {
         loginLoop = false;
     } else {
@@ -78,17 +77,49 @@ while (mainLoop) {
     string option = Console.ReadLine();
 
     if (option == "1") {
-
+        for (int n = 0; n < characters.Count; n++) {
+            Console.WriteLine($"Name: {characters[n].Name} | Role: {characters[n].Role} | Origin: {characters[n].Origin}");
+        }
     } else if (option == "2") {
         Console.WriteLine("FILTER DATA");
-        Console.WriteLine("1. Filter by Name");
-        Console.WriteLine("2. Filter by Artist");
-        Console.WriteLine("3. Filter by Genre");
+        Console.WriteLine("1. Search a Name");
+        Console.WriteLine("2. Filter by Role");
+        Console.WriteLine("3. Filter by Origin");
         Console.WriteLine("4. Back");
         string filterOption = Console.ReadLine();
+        
+        if (filterOption == "1") {
+            Console.WriteLine("Please Enter a Name");
+            string enteredName = Console.ReadLine();
+            int searchIndex = linearSearch(characters, enteredName);
+            if (searchIndex == -1) {
+                Console.WriteLine("Name not found");
+            } else {
+                Console.WriteLine($"\nName: {characters[searchIndex].Name} | Role: {characters[searchIndex].Role} | Origin: {characters[searchIndex].Origin}");
+            }
+        } else if (filterOption == "2") {
+            Console.WriteLine("Select Role to Search");
+            Console.WriteLine("1. Duelist");
+            Console.WriteLine("2. Initiator");
+            Console.WriteLine("3. Controller");
+            Console.WriteLine("4. Sentinel");
+            string roleOption = Console.ReadLine();
+            
+        } else if (filterOption == "3") {
+
+        } else if (filterOption == "4") {
+
+        } else {
+            Console.WriteLine("Invalid Option");
+        }
 
     } else if (option == "3") {
- 
+        Console.WriteLine("SORT DATA");
+        Console.WriteLine("1. Sort Names");
+        Console.WriteLine("2. Sort Roles");
+        Console.WriteLine("3. Sort Origin");
+        string sortOption = Console.ReadLine();
+        selectionSort(characters, sortOption);
     } else if (option == "4") {
  
     } else if (option == "5") {
@@ -108,15 +139,42 @@ while (mainLoop) {
     }
 }
 
+int linearSearch(List<Char> aList, string item) {
+    for (int n = 0; n < aList.Count; n++) {
+        if (aList[n].Name.ToLower() == item.ToLower()) {
+            return n;
+        }
+    }
+    return -1;
+}
+
+static void selectionSort(List<Char> aList, string type) {
+    List<Char> sortedList = aList;
+    int min;
+    Char temp;
+    for (int n = 0; n < aList.Count; n++) {
+        min = n;
+        for (int i = min; i < aList.Count; i++) {
+                if (string.Compare(aList[min].Name, aList[i].Name, true) > 0) {
+                    min = i;
+                }
+        }
+        temp = aList[n];
+        aList[n] = aList[min];
+        aList[min] = temp;
+    }
+}
+
+
 class Char {
 	public string Name { get; set; }
 	public string Role { get; set; }
-	public string Genre { get; set; }
+	public string Origin { get; set; }
 
-	public Char(string name, string role, string genre) {
+	public Char(string name, string role, string origin) {
 		this.Name = name;
 		this.Role = role;
-		this.Genre = genre;
+		this.Origin = origin;
 	}
 }
 

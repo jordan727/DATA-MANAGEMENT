@@ -1,0 +1,21 @@
+[
+{"Name":"Jett","Role":"Duelist","Origin":"South Korea"},
+{"Name":"Phoenix","Role":"Duelist","Origin":"United Kingdom"},
+{"Name":"Raze","Role":"Duelist","Origin":"Brazil"},
+{"Name":"Reyna","Role":"Duelist","Origin":"Mexico"},
+{"Name":"Yoru","Role":"Duelist","Origin":"Japan"},
+{"Name":"Neon","Role":"Duelist","Origin":"Philippines"},
+{"Name":"KAY/O","Role":"Initiator","Origin":"Unknown"},
+{"Name":"Skye","Role":"Initiator","Origin":"Australia"},
+{"Name":"Breach","Role":"Initiator","Origin":"Sweden"},
+{"Name":"Sova","Role":"Initiator","Origin":"Russia"},
+{"Name":"Fade","Role":"Initiator","Origin":"Turkey"},
+{"Name":"Omen","Role":"Controller","Origin":"Unknown"},
+{"Name":"Brimstone","Role":"Controller","Origin":"United States"},
+{"Name":"Astra","Role":"Controller","Origin":"Ghana"},
+{"Name":"Viper","Role":"Controller","Origin":"United States"},
+{"Name":"Chamber","Role":"Sentinel","Origin":"France"},
+{"Name":"Cypher","Role":"Sentinel","Origin":"Morocco"},
+{"Name":"Killjoy","Role":"Sentinel","Origin":"Germany"},
+{"Name":"Sage","Role":"Sentinel","Origin":"China"}
+]
