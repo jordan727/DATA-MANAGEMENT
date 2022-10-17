@@ -14,6 +14,7 @@
 {"Name":"Brimstone","Role":"Controller","Origin":"United States"},
 {"Name":"Astra","Role":"Controller","Origin":"Ghana"},
 {"Name":"Viper","Role":"Controller","Origin":"United States"},
+{"Name":"Harbor","Role":"Controller","Origin":"India"},
 {"Name":"Chamber","Role":"Sentinel","Origin":"France"},
 {"Name":"Cypher","Role":"Sentinel","Origin":"Morocco"},
 {"Name":"Killjoy","Role":"Sentinel","Origin":"Germany"},

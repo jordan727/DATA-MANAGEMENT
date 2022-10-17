@@ -94,22 +94,26 @@ while (mainLoop) {
         }
     // UNFAVOURITE DATA
     } else if (option == "5") {
-        Console.WriteLine("Please enter the name of the character you would like to remove from favourites");
+        Console.WriteLine("Please enter the name of the character you would like unfavourite");
         string enteredName = Console.ReadLine();
         int nameIndex = linearSearch(users[currentUserIndex].Favourites, enteredName);
         if (nameIndex == -1) {
             Console.WriteLine("Name is not favourited");
         } else {
+            Console.WriteLine($"{users[currentUserIndex].Favourites[nameIndex].Name} has been successfully unfavourited");
             users[currentUserIndex].Favourites.RemoveAt(nameIndex);
-            Console.WriteLine($"{characters[nameIndex].Name} has been successfully unfavourited");
             // Save all account data
             string json = JsonSerializer.Serialize(users);
             File.WriteAllText(accountsFile, json);            
         }
     // DISPLAY FAVOURITE DATA
     } else if (option == "6") {
-        for (int n = 0; n < users[currentUserIndex].Favourites.Count; n++) {
-            Console.WriteLine(users[currentUserIndex].Favourites[n].getAllData());
+        if (users[currentUserIndex].Favourites.Count > 0) {
+            for (int n = 0; n < users[currentUserIndex].Favourites.Count; n++) {
+                Console.WriteLine(users[currentUserIndex].Favourites[n].getAllData());
+            }
+        } else {
+            Console.WriteLine("You have no favourites");
         }
     // LOGOUT
     } else if (option == "7") {
@@ -131,11 +135,11 @@ while (mainLoop) {
 
 // LOGIN PAGE FUNCTION - (USE FUNCTION TO RETURN TO PAGE AFTER SELECTING LOGOUT)
 void login() {
-    Console.WriteLine("WELCOME\n1. Login\n2. Create New Account\n3. Exit\n");
+    Console.WriteLine("\nWELCOME\n1. Login\n2. Create New Account\n3. Exit\n");
     string accountOption = Console.ReadLine();
     // LOGIN
     if (accountOption == "1") {
-        Console.WriteLine("LOGIN");
+        Console.WriteLine("\nLOGIN");
         Console.Write("Enter Username: ");
         string enteredUsername = Console.ReadLine();
         Console.Write("Enter Password: ");
@@ -149,10 +153,10 @@ void login() {
                 return;
             }
         }
-        Console.WriteLine("\nInvalid Login Credentials\n");
+        Console.WriteLine("\nInvalid Login Credentials");
     // CREATE ACCOUNT
     } else if (accountOption == "2") {
-        Console.WriteLine("CREATE ACCOUNT");
+        Console.WriteLine("\nCREATE ACCOUNT");
         Console.Write("Enter Username: ");
         string newUsername = Console.ReadLine();
         for (int i = 0; i < users.Count; i++) {
@@ -161,19 +165,19 @@ void login() {
                 return;
             }
         }
-        Console.Write("\nEnter Password: ");
+        Console.Write("Enter Password: ");
         string newPassword = Console.ReadLine();
         users.Add(new User(newUsername, newPassword));
-        Console.WriteLine("Account Successfully Created");
+        Console.WriteLine("\nAccount Successfully Created");
         // Save all account data
         string json = JsonSerializer.Serialize(users);
         File.WriteAllText(accountsFile, json);
     // EXIT
     } else if (accountOption == "3") {
-        Console.WriteLine("Goodbye!");
+        Console.WriteLine("\nGoodbye!");
         loginLoop = false;
     } else {
-        Console.WriteLine("INVALID OPTION\n");
+        Console.WriteLine("\nINVALID OPTION");
     }
 }
 
