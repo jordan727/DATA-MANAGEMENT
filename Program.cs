@@ -25,6 +25,7 @@ while (loginLoop) {
 // DATA MANAGEMENT PAGE
 while (mainLoop) {
     Console.WriteLine("\nMAIN MENU\n1. Display All Data\n2. Display Filtered Data\n3. Sort Data\n4. Add New Favourites\n5. Remove Favourites\n6. Display Favourites\n7. Logout\n8. Exit\n");
+    Console.Write("Select an Option (1-8): ");
     string option = Console.ReadLine();
 
     // DISPLAY ALL DATA
@@ -35,6 +36,7 @@ while (mainLoop) {
     // FILTER DATA
     } else if (option == "2") {
         Console.WriteLine("\nFILTER DATA\n1. Search a Name\n2. Filter by Role\n3. Filter by Origin\n4. Back\n");
+        Console.Write("Select an Option (1-4): ");
         string filterOption = Console.ReadLine();
         
         // Filter Selection
